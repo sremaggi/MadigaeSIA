@@ -1,0 +1,116 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.div-tile{
+  background-color:lightblue;
+  height: 100%;
+  width: 50%;
+  margin:3px;
+  
+}
+
+mat-grid-tile{
+  
+  height: 350px;
+  
+  
+}
+
+.card{
+  width: 100%;
+  height: 100%;
+  margin: 5px;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 160px;
+  height: 160px;
+  padding: 5px;
+  
+
+  
+}
+
+.p-tile{
+  text-align: center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.header-tile{
+  text-align: center;
+  width: 100%;
+  
+}
+
+.tile-gran{
+  margin-top: 10px;
+}
+
+.div-card{
+  background: coral;
+  width: 100%;
+  height: 100%;
+}
+
+.card-product{
+  display: inline-block;
+}
+
+.cp1{
+
+  width: 100%;
+  height: 100%;
+}
+
+.img-prod{
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.title-product{
+
+  color: grey;
+}

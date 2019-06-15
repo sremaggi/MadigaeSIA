@@ -1,0 +1,38 @@
+
+<div class="row">
+        <div class="card col-sm-4 offset-sm-4 mt-2">
+            <div class="card-header mt-2">
+              <h5 class="form-group" style="text-align: center">Crear Categoria</h5>
+            </div>
+          <div class=" card-body p-2 mt-2">
+      
+            <form (submit)="submitProduct()" class="p-2">
+      
+              
+      
+              <div class="form-group">
+                  <select class="form-control form-control-sm" name="category" [(ngModel)]="category.category" aria-placeholder="Categoria Principal">
+                      <option>Fisica</option> 
+                      <option>Quimica</option>
+                      <option>Biologia</option>s
+                    </select> 
+              </div>
+
+              <div *ngIf=""></div>
+              
+              <div class="form-group">
+                <input type="text" name="subCategory" [(ngModel)]="category.subCategory" class="form-control" placeholder="Sub Category" >
+              </div><div class="form-group">
+                    <input type="text" name="subsubCategory" [(ngModel)]="category.subsubCategory" class="form-control" placeholder="Sub Sub Category" >
+                  </div>
+
+
+      
+              
+              <button type="submit" class="btn btn-primary btn-block">
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>

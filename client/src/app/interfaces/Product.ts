@@ -1,8 +1,11 @@
-export interface Product {
-    _id?: string;
+export interface Product{
+    _id?:string;
     name: string;
+    category:string;
+    subCategory:string;
+    
     description: string;
-    price: number;
     imageURL: string;
+    price: number;
     createdAt?: Date;
 }

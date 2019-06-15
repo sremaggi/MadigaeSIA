@@ -1,0 +1,107 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    
+    <a class="navbar-brand" href="#">Madigae SIA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto mr-5">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Quienes Somos <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Registro</a>
+  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/product" >Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/product/create" >Crear Producto</a>
+        </li>
+        
+       
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <h5 class="mx-4">Categorias</h5>
+
+        <a mat-list-item routerLink=".">Fisica</a>
+
+
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      
+        <button mat-icon-button (click)="snav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-form-field>
+        
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <div class="container ">
+          <div class="row text-white">
+            <div class="col-md-3 order-md-2 bg-danger">
+
+                <h5 class="p-2 m-2">Carrito</h5>
+
+            </div>
+
+            <div *ngFor="let product of products " class=" col-md-3 order-md-1 card-product p-2">
+
+              <mat-card class="example-card w-100 h-100">
+
+                <img mat-card-lg-image [src]="product.imageURL" alt="Photo of a Shiba Inu" width="225px" height="225px"
+                  class="rounded mx-auto d-block">
+                <p>{{product.name}}</p>
+                <mat-card-content>
+                  <h6>Precio: ${{product.price}}</h6>
+
+                  <button class="btn btn-primary" (click)='agregar(product)'>
+                    Agregar
+                  </button>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button (click)="deleteProduct(product._id)" class="btn btn-danger bg-danger" mat-button>
+                    Delete
+                  </button>
+                  <button [routerLink]="['/product/edit', product._id]" class="btn btn-secondary bg-success" mat-button>
+                    Edit
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>

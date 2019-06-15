@@ -49,7 +49,7 @@ export class ProductController {
 
     // Update Product: /update?productID=5c9d45e705ea4843c8d0e8f7
     @Put('/update')
-    async updateProduct(@Res() res, @Body() createProductDTO: CreateProductDTO, @Query('productID') productID) {
+    async updateProduct(@Res() res , @Body() createProductDTO: CreateProductDTO, @Query('productID') productID : string) {
         const updatedProduct = await this.productService.updateProduct(productID, createProductDTO);
         if (!updatedProduct) throw new NotFoundException('Product does not exist!');
         return res.status(HttpStatus.OK).json({

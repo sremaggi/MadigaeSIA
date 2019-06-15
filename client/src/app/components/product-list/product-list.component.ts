@@ -12,11 +12,20 @@ export class ProductListComponent implements OnInit {
 
   constructor(private productService: ProductService) { }
 
-  products: Product[];
+  products: Product[]=[];
 
   ngOnInit() {
     this.getProducts();
   }
+
+  tiles = [
+    {text: 'One', cols: 1, rows: 8, color: 'lightblue'},
+   
+  ];
+
+  
+
+ 
 
   getProducts(): void {
     this.productService.getProducts()
@@ -37,4 +46,4 @@ export class ProductListComponent implements OnInit {
       )
   }
 
-}
+} 

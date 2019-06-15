@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/Product';
 import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CategoryService } from "../../services/category.service";
+import { Category } from 'src/app/interfaces/Category';
 
 @Component({
   selector: 'app-product-form',
@@ -13,6 +15,8 @@ export class ProductFormComponent implements OnInit {
   product: Product = {
     name: '',
     description: '',
+    category:'',
+    subCategory:'',
     imageURL: '',
     price: 0
   };
@@ -21,10 +25,12 @@ export class ProductFormComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit() {
+    
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
       this.productService.getProduct(params.id)
@@ -37,14 +43,22 @@ export class ProductFormComponent implements OnInit {
           err => console.log(err)
         )
     }
+
+    this.getCategorys();
   }
+  categorys: Category[]=[];
+
+  cat2=false;
+  categoria1="";
+ 
+
 
   submitProduct() {
     this.productService.createProduct(this.product)
       .subscribe(
         res => {
           console.log(res);
-          this.router.navigate(['/']);
+          this.router.navigate(['/product']);
         },
         err => console.log(err)
       )
