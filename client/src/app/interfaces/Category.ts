@@ -1,6 +1,6 @@
 export interface Category{
     _id?:string;
-    category:string;
+    category_name:string;
     subCategory:string;
     subsubCategory:String;
 

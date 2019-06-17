@@ -1,6 +1,6 @@
 export class CreateCategoryDTO {
     
-    readonly category:string;
+    readonly category_name:string;
     readonly subCategory:string;
     readonly subsubCategory:string;
     

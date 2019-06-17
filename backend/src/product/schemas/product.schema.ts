@@ -6,7 +6,7 @@ export const ProductSchema = new Schema({
     imageURL: String,
     category:String,
     subCategory:String,
-    subCategory2:String,
+    subsubCategory:String,
     price: Number,
     createdAt: { type: Date, default: Date.now }
 });

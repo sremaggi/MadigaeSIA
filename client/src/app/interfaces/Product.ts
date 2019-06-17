@@ -3,6 +3,7 @@ export interface Product{
     name: string;
     category:string;
     subCategory:string;
+    subsubCategory:string;
     
     description: string;
     imageURL: string;
