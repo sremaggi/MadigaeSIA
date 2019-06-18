@@ -14,9 +14,9 @@ export class CategoryFormComponent implements OnInit {
 
   category: Category = {
     
-    category:'',
+    category_name:'',
     subCategory:'',
-    subsubCategory:""
+    subsubCategory:''
   };
 
   constructor(

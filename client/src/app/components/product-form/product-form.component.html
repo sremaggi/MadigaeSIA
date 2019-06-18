@@ -1,43 +1,80 @@
 <div class="row">
   <div class="card col-sm-4 offset-sm-4 mt-2">
-      <div class="card-header mt-2">
-        <h5 class="form-group" style="text-align: center">Formulario</h5>
-      </div>
+    <div class="card-header mt-2">
+      <h5 class="form-group" style="text-align: center">Formulario</h5>
+    </div>
     <div class=" card-body p-2 mt-2">
 
       <form (submit)="edit ? updateProduct() : submitProduct()" class="p-2">
 
         <div class="form-group">
-          <input type="text" name="name" [(ngModel)]="product.name" class="form-control" placeholder="Product Name" autofocus>
+          <input type="text" name="name" [(ngModel)]="product.name" class="form-control" placeholder="Product Name"
+            autofocus>
         </div>
 
-        <mat-form-field>
-            <mat-label>Categoría</mat-label>
-            <mat-select [(value)]="categoria1">
-                <mat-option value="">None</mat-option>
-              <mat-option value="Fisica">Fisica</mat-option>
-              <mat-option value="Quimica">Quimica</mat-option>
-              <mat-option value="Biologia">Biología</mat-option>
-            </mat-select>
-          </mat-form-field>
-          
-          <p>You selected: {{categoria1}}</p> 
 
-          
-          <div *ngFor="let category of categorys"> <p>hola hola</p></div>
-        
-        <div class="form-group">
-          <input type="text" name="subCategory" [(ngModel)]="product.subCategory" class="form-control" placeholder="Sub Category" >
+        <div class="form-group" class="m-2 p-2">
+
+
+          <mat-select placeholder="Categoria" name="category" [(ngModel)]="product.category" [(value)]="selected1">
+
+            <mat-option value="Fisica">Fisica</mat-option>
+            <mat-option value="Biologia">Biologia</mat-option>
+            <mat-option value="Quimica">Quimica</mat-option>
+          </mat-select>
         </div>
 
+        <div *ngIf="selected1 " class="m-2 p-2">
+
+          <mat-select placeholder="Sub Categoria" name="subCategory" [(ngModel)]="product.subCategory"
+            [(value)]="selected2">
+
+            <mat-option *ngFor="let cat of categorys" *ngIf="cat.category == 'Fisica'" [value]="cat.subCategory">{{cat.subCategory}}</mat-option>
+
+          </mat-select>
+
+
+        </div>
+
+       
+
+
+
+        <div *ngIf="selected2 " class="m-2 p-2">
+
+          <mat-select placeholder="Sub Sub Categoria" name="subsubCategory" [(ngModel)]="product.subsubCategory"
+            [(value)]="selected3">
+
+            <mat-option *ngFor="let cat of categorys" [value]="cat.subsubCategory">{{cat.subsubCategory}}</mat-option>
+
+          </mat-select>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="form-group">
-          <textarea type="text" name="description" [(ngModel)]="product.description" class="form-control" placeholder="Description"></textarea>
+          <textarea type="text" name="description" [(ngModel)]="product.description" class="form-control"
+            placeholder="Description"></textarea>
         </div>
         <div class="form-group">
           <input type="text" name="price" [(ngModel)]="product.price" class="form-control" placeholder="Price">
         </div>
         <div class="form-group">
-          <input type="text" name="imageURL" [(ngModel)]="product.imageURL" class="form-control" placeholder="Image URL">
+          <input type="text" name="imageURL" [(ngModel)]="product.imageURL" class="form-control"
+            placeholder="Image URL">
         </div>
         <button type="submit" class="btn btn-primary btn-block">
           Save

@@ -4,6 +4,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CategoryService } from "../../services/category.service";
 import { Category } from 'src/app/interfaces/Category';
+import {MediaMatcher} from '@angular/cdk/layout';
+import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-product-form',
@@ -16,18 +18,25 @@ export class ProductFormComponent implements OnInit {
     name: '',
     description: '',
     category:'',
-    subCategory:'',
+    subCategory:'None',
+    subsubCategory:'None',
     imageURL: '',
     price: 0
   };
   edit: boolean = false;
+  value: string = '';
 
   constructor(
     private productService: ProductService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService
-  ) { }
+  ) { 
+
+    
+  }
+
+  categorys: Category[]=[];
 
   ngOnInit() {
     
@@ -43,14 +52,23 @@ export class ProductFormComponent implements OnInit {
           err => console.log(err)
         )
     }
-
-    this.getCategorys();
+      this.getCategorys();
+     console.log(this.categorys);
   }
-  categorys: Category[]=[];
 
-  cat2=false;
-  categoria1="";
+  getCategorys():void{
+    this.categoryService.getCategorys()
+     .subscribe(
+       res =>{this.categorys = res ; console.log(res)}, 
+       err => console.log(err),
+       )
+      
+ }
+  
  
+ 
+
+
 
 
   submitProduct() {
@@ -62,6 +80,7 @@ export class ProductFormComponent implements OnInit {
         },
         err => console.log(err)
       )
+      console.log(this.product);
   }
 
   updateProduct() {
