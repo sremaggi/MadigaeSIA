@@ -26,27 +26,32 @@
 
         <div *ngIf="selected1 " class="m-2 p-2">
 
-          <mat-select placeholder="Sub Categoria" name="subCategory" [(ngModel)]="product.subCategory" [(value)]="selected2">
+          <mat-select placeholder="Sub Categoria" name="subCategory" [(ngModel)]="product.subCategory"
+            [(value)]="selected2">
 
-            <mat-option *ngFor="let cat of categorys" [value]="cat.subCategory">{{cat.subCategory}}</mat-option>
-            
+            <mat-option *ngFor="let cat of categorys" *ngIf="cat.category == 'Fisica'" [value]="cat.subCategory">{{cat.subCategory}}</mat-option>
+
           </mat-select>
 
 
         </div>
 
+       
+
+
 
         <div *ngIf="selected2 " class="m-2 p-2">
 
-            <mat-select placeholder="Sub Sub Categoria" name="subsubCategory" [(ngModel)]="product.subsubCategory" [(value)]="selected3">
-  
-              <mat-option *ngFor="let cat of categorys" [value]="cat.subsubCategory">{{cat.subsubCategory}}</mat-option>
-              
-            </mat-select>
-  
-  
-          </div>
-  
+          <mat-select placeholder="Sub Sub Categoria" name="subsubCategory" [(ngModel)]="product.subsubCategory"
+            [(value)]="selected3">
+
+            <mat-option *ngFor="let cat of categorys" [value]="cat.subsubCategory">{{cat.subsubCategory}}</mat-option>
+
+          </mat-select>
+
+
+        </div>
+
 
 
 
